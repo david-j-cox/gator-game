@@ -1,0 +1,27 @@
+/* ===== Energy Bar: 100 colored squares ===== */
+.energy-bar {
+  display: flex;
+  gap: 2px;
+  padding: 8px 0;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.energy-square {
+  width: 6px;
+  height: 24px;
+  border-radius: 2px;
+  transition: opacity 0.15s ease;
+}
+
+/* Color classes: 25 red, 25 orange, 25 yellow, 25 green (left to right) */
+.energy-square.red    { background: #e74c3c; }
+.energy-square.orange { background: #e67e22; }
+.energy-square.yellow { background: #f1c40f; }
+.energy-square.green  { background: #2ecc71; }
+
+/* Depleted state — square becomes invisible */
+.energy-square.depleted {
+  opacity: 0.1;
+  background: #333;
+}

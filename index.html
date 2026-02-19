@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gator Game</title>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/energy-bar.css">
+  <link rel="stylesheet" href="css/animals.css">
+</head>
+<body>
+  <!-- ===================== INTRO SCREEN ===================== -->
+  <div id="screen-intro" class="screen active">
+    <div class="screen-content intro-content">
+      <h1>🐊 Gator Game</h1>
+      <p>Welcome! In this game, you will help feed an alligator to keep it alive.</p>
+      <p>You will choose between different food sources. Each choice gives your alligator energy, but energy also drains over time.</p>
+      <p>If the alligator's energy reaches zero, it dies and you must wait until the next round.</p>
+      <p><strong>Your goal:</strong> Keep the alligator alive and gain as much total energy as possible.</p>
+      <div class="intro-controls">
+        <label for="participant-id">Participant ID:</label>
+        <input type="text" id="participant-id" placeholder="Enter ID" autocomplete="off">
+        <button id="btn-start" class="btn btn-primary" disabled>Start Game</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== EXPOSURE SCREEN ===================== -->
+  <div id="screen-exposure" class="screen">
+    <div class="hud">
+      <div class="hud-item">
+        <span class="hud-label">Days Left</span>
+        <span id="exposure-days-left" class="hud-value">5</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">Current Energy Level</span>
+        <span id="exposure-current-energy" class="hud-value">50</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">Total Energy Gained</span>
+        <span id="exposure-total-energy" class="hud-value">0</span>
+      </div>
+    </div>
+    <div id="exposure-energy-bar" class="energy-bar"></div>
+    <div class="game-area">
+      <div class="alligator-container">
+        <div id="exposure-alligator" class="animal alligator">🐊</div>
+      </div>
+      <div class="choices">
+        <button id="exposure-fish" class="animal-btn choice-btn" data-choice="fish">
+          <span class="animal fish">🐟</span>
+          <span class="choice-label">Fish (+1, now)</span>
+        </button>
+        <button id="exposure-ll" class="animal-btn choice-btn" data-choice="larger-later">
+          <span class="animal chicken">🐔</span>
+          <span class="choice-label">Chicken (+10, delayed)</span>
+        </button>
+      </div>
+    </div>
+    <div class="exposure-status">
+      <p id="exposure-requirement">Click fish at least 3 times AND chicken at least 3 times to continue.</p>
+      <button id="btn-ready" class="btn btn-primary" disabled>Ready</button>
+    </div>
+  </div>
+
+  <!-- ===================== TRANSITION SCREEN ===================== -->
+  <div id="screen-transition" class="screen">
+    <div class="screen-content transition-content">
+      <h2 id="transition-title">Next Round</h2>
+      <p id="transition-message">Get ready for the next condition.</p>
+      <p id="transition-animal-preview" class="animal-preview"></p>
+      <button id="btn-continue" class="btn btn-primary">Continue</button>
+    </div>
+  </div>
+
+  <!-- ===================== CONDITION SCREEN ===================== -->
+  <div id="screen-condition" class="screen">
+    <div class="hud">
+      <div class="hud-item">
+        <span class="hud-label">Days Left</span>
+        <span id="condition-days-left" class="hud-value">5</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">Current Energy Level</span>
+        <span id="condition-current-energy" class="hud-value">50</span>
+      </div>
+      <div class="hud-item">
+        <span class="hud-label">Total Energy Gained</span>
+        <span id="condition-total-energy" class="hud-value">0</span>
+      </div>
+    </div>
+    <div id="condition-energy-bar" class="energy-bar"></div>
+    <div class="game-area">
+      <div class="alligator-container">
+        <div id="condition-alligator" class="animal alligator">🐊</div>
+      </div>
+      <div class="choices">
+        <button id="condition-fish" class="animal-btn choice-btn" data-choice="fish">
+          <span class="animal fish">🐟</span>
+          <span class="choice-label">Fish (+1, now)</span>
+        </button>
+        <button id="condition-ll" class="animal-btn choice-btn" data-choice="larger-later">
+          <span id="condition-ll-emoji" class="animal">🐔</span>
+          <span id="condition-ll-label" class="choice-label">Chicken (+10, delayed)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== Global Overlays (work for both exposure & condition) ===== -->
+  <!-- Game-over overlay -->
+  <div id="game-over-overlay" class="overlay hidden">
+    <div class="overlay-content">
+      <p class="game-over-emoji">💀</p>
+      <h2>The alligator died!</h2>
+      <p>Wait for the current round to end...</p>
+      <p id="game-over-timer" class="game-over-timer"></p>
+    </div>
+  </div>
+  <!-- Delay indicator -->
+  <div id="delay-indicator" class="delay-indicator hidden">
+    <p>Waiting for food... <span id="delay-countdown"></span></p>
+  </div>
+
+  <!-- ===================== END SCREEN ===================== -->
+  <div id="screen-end" class="screen">
+    <div class="screen-content end-content">
+      <h1>Game Complete!</h1>
+      <p>Thank you for participating.</p>
+      <div id="end-summary"></div>
+      <button id="btn-download" class="btn btn-primary">Download Data (CSV)</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

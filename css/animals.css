@@ -1,0 +1,63 @@
+/* ===== Animal Placeholders (Emoji) ===== */
+.animal {
+  font-size: 4rem;
+  line-height: 1;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.alligator {
+  font-size: 5rem;
+}
+
+/* ===== Hover States ===== */
+.animal-btn:hover:not(:disabled) .fish {
+  transform: scale(1.15);
+}
+
+.animal-btn:hover:not(:disabled) .chicken,
+.animal-btn:hover:not(:disabled) .crab,
+.animal-btn:hover:not(:disabled) .turtle,
+.animal-btn:hover:not(:disabled) .piranha {
+  transform: scale(1.15);
+}
+
+/* ===== Eating Animation ===== */
+@keyframes eat-chomp {
+  0%   { transform: scale(1) rotate(0deg); }
+  25%  { transform: scale(1.2) rotate(-10deg); }
+  50%  { transform: scale(1) rotate(0deg); }
+  75%  { transform: scale(1.2) rotate(10deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes food-consumed {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(0.5) translateY(-20px); opacity: 0.5; }
+  100% { transform: scale(0) translateY(-40px); opacity: 0; }
+}
+
+.alligator.eating {
+  animation: eat-chomp 0.5s ease-in-out 2;
+}
+
+.animal-btn .animal.consumed {
+  animation: food-consumed 0.4s ease-in forwards;
+}
+
+/* ===== Game Over State ===== */
+.alligator.dead {
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
+/* ===== Waiting State (during delay) ===== */
+.animal-btn.waiting {
+  border-color: #ffd93d;
+  animation: pulse-border 1s ease-in-out infinite;
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: #ffd93d; }
+  50%      { border-color: #665500; }
+}
