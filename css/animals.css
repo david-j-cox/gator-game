@@ -61,3 +61,57 @@
   0%, 100% { border-color: #ffd93d; }
   50%      { border-color: #665500; }
 }
+
+/* ===== Ambient Swimming (Gator) ===== */
+@keyframes gator-swim {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33%      { transform: translateY(-6px) rotate(-2deg); }
+  66%      { transform: translateY(4px) rotate(1.5deg); }
+}
+
+.alligator.swimming {
+  animation: gator-swim 3s ease-in-out infinite;
+}
+
+/* Eating overrides swimming (higher specificity) */
+.alligator.swimming.eating {
+  animation: eat-chomp 0.5s ease-in-out 2;
+}
+
+/* Dead overrides swimming */
+.alligator.swimming.dead {
+  animation: none;
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
+/* ===== Ambient Fish Bob ===== */
+@keyframes fish-bob {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  40%      { transform: translateY(-4px) translateX(3px); }
+  70%      { transform: translateY(3px) translateX(-2px); }
+}
+
+.water-choice .fish {
+  animation: fish-bob 2.5s ease-in-out infinite;
+}
+
+/* Consumed overrides fish bob */
+.water-choice .fish.consumed {
+  animation: food-consumed 0.4s ease-in forwards;
+}
+
+/* ===== Ambient Land Animal Idle ===== */
+@keyframes land-idle {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+
+.zone-right .animal {
+  animation: land-idle 2s ease-in-out infinite;
+}
+
+/* Consumed overrides idle */
+.zone-right .animal.consumed {
+  animation: food-consumed 0.4s ease-in forwards;
+}

@@ -85,10 +85,15 @@ body {
   justify-content: center;
 }
 
-.choices {
-  display: flex;
-  gap: 48px;
-  justify-content: center;
+/* Swamp scene: horizontal layout */
+.game-area.swamp-scene {
+  flex-direction: row;
+  align-items: stretch;
+  gap: 0;
+  padding: 0;
+  min-height: 340px;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 /* ===== Buttons ===== */
@@ -194,6 +199,18 @@ body {
 
 .animal-preview {
   font-size: 4rem;
+}
+
+/* ===== Practice Banner ===== */
+.practice-banner {
+  text-align: center;
+  padding: 8px 0;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffd93d;
+  border-bottom: 2px solid #ffd93d33;
 }
 
 /* ===== Exposure Status ===== */

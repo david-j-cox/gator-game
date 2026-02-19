@@ -30,7 +30,7 @@ export function cacheDom() {
   dom.conditionFish = document.getElementById('condition-fish');
   dom.conditionLL = document.getElementById('condition-ll');
   dom.conditionLLEmoji = document.getElementById('condition-ll-emoji');
-  dom.conditionLLLabel = document.getElementById('condition-ll-label');
+  dom.conditionZoneRight = document.getElementById('condition-zone-right');
   dom.gameOverOverlay = document.getElementById('game-over-overlay');
   dom.gameOverTimer = document.getElementById('game-over-timer');
   dom.delayIndicator = document.getElementById('delay-indicator');
@@ -101,8 +101,14 @@ export function setConditionAnimal(conditionId) {
   if (!cond) return;
   dom.conditionLLEmoji.textContent = cond.emoji;
   dom.conditionLLEmoji.className = `animal ${cond.animal}`;
-  const reward = get('rewardAmount');
-  dom.conditionLLLabel.textContent = `${cond.emoji} ${cond.animal.charAt(0).toUpperCase() + cond.animal.slice(1)} (+${reward}, delayed)`;
+
+  // Update right-zone habitat background
+  dom.conditionZoneRight.className = `zone-right habitat-${cond.habitat}`;
+
+  // Update LL button zone-color class
+  dom.conditionLL.className = 'animal-btn choice-btn ' +
+    (cond.habitat === 'water' ? 'water-choice' :
+     cond.habitat === 'shore' ? 'shore-choice' : 'land-choice');
 }
 
 /**
@@ -174,6 +180,7 @@ export function setTransitionContent(conditionId, conditionNumber) {
  */
 export function resetConditionVisuals() {
   dom.conditionAlligator.classList.remove('dead', 'eating');
+  dom.conditionAlligator.classList.add('swimming');
   showGameOver(false);
   showDelayIndicator(false);
   dom.conditionLL.classList.remove('waiting');

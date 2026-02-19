@@ -37,6 +37,7 @@ const CONFIG = Object.freeze({
       id: 'greatest-positive',
       animal: 'chicken',
       emoji: '🐔',
+      habitat: 'land',
       drainIntervalMs: 3000,              // 1 pt per 3s
       label: 'Greatest Positive',
     }),
@@ -44,6 +45,7 @@ const CONFIG = Object.freeze({
       id: 'moderate-positive',
       animal: 'crab',
       emoji: '🦀',
+      habitat: 'shore',
       drainIntervalMs: 2000,              // 1 pt per 2s
       label: 'Moderate Positive',
     }),
@@ -51,6 +53,7 @@ const CONFIG = Object.freeze({
       id: 'small-negative',
       animal: 'turtle',
       emoji: '🐢',
+      habitat: 'land',
       drainIntervalMs: 950,               // 1 pt per 0.95s
       label: 'Small Negative',
     }),
@@ -58,6 +61,7 @@ const CONFIG = Object.freeze({
       id: 'greatest-negative',
       animal: 'piranha',
       emoji: '🐡',
+      habitat: 'water',
       drainIntervalMs: 500,               // 1 pt per 0.5s
       label: 'Greatest Negative',
     }),

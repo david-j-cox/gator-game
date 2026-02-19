@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/main.css">
   <link rel="stylesheet" href="css/energy-bar.css">
   <link rel="stylesheet" href="css/animals.css">
+  <link rel="stylesheet" href="css/scene.css">
 </head>
 <body>
   <!-- ===================== INTRO SCREEN ===================== -->
@@ -17,6 +18,7 @@
       <p>You will choose between different food sources. Each choice gives your alligator energy, but energy also drains over time.</p>
       <p>If the alligator's energy reaches zero, it dies and you must wait until the next round.</p>
       <p><strong>Your goal:</strong> Keep the alligator alive and gain as much total energy as possible.</p>
+      <p>You will start with a <strong>practice round</strong> to learn how the game works before the experiment begins.</p>
       <div class="intro-controls">
         <label for="participant-id">Participant ID:</label>
         <input type="text" id="participant-id" placeholder="Enter ID" autocomplete="off">
@@ -27,6 +29,7 @@
 
   <!-- ===================== EXPOSURE SCREEN ===================== -->
   <div id="screen-exposure" class="screen">
+    <div class="practice-banner">Practice Round</div>
     <div class="hud">
       <div class="hud-item">
         <span class="hud-label">Days Left</span>
@@ -42,24 +45,33 @@
       </div>
     </div>
     <div id="exposure-energy-bar" class="energy-bar"></div>
-    <div class="game-area">
-      <div class="alligator-container">
-        <div id="exposure-alligator" class="animal alligator">🐊</div>
-      </div>
-      <div class="choices">
-        <button id="exposure-fish" class="animal-btn choice-btn" data-choice="fish">
+    <div class="game-area swamp-scene">
+      <div class="zone-left habitat-water">
+        <div class="water-ripples" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="water-plants" aria-hidden="true">
+          <span>🌿</span><span>🌿</span>
+        </div>
+        <button id="exposure-fish" class="animal-btn choice-btn water-choice" data-choice="fish">
           <span class="animal fish">🐟</span>
-          <span class="choice-label">Fish (+1, now)</span>
         </button>
-        <button id="exposure-ll" class="animal-btn choice-btn" data-choice="larger-later">
+      </div>
+      <div class="alligator-container shore-strip">
+        <div id="exposure-alligator" class="animal alligator swimming">🐊</div>
+      </div>
+      <div class="zone-right habitat-land">
+        <div class="grass-tufts" aria-hidden="true">
+          <span>🌱</span><span>🌱</span><span>🌱</span>
+        </div>
+        <button id="exposure-ll" class="animal-btn choice-btn land-choice" data-choice="larger-later">
           <span class="animal chicken">🐔</span>
-          <span class="choice-label">Chicken (+10, delayed)</span>
         </button>
       </div>
     </div>
     <div class="exposure-status">
       <p id="exposure-requirement">Click fish at least 3 times AND chicken at least 3 times to continue.</p>
-      <button id="btn-ready" class="btn btn-primary" disabled>Ready</button>
+      <button id="btn-ready" class="btn btn-primary" disabled>Ready to Begin Experiment</button>
     </div>
   </div>
 
@@ -90,18 +102,30 @@
       </div>
     </div>
     <div id="condition-energy-bar" class="energy-bar"></div>
-    <div class="game-area">
-      <div class="alligator-container">
-        <div id="condition-alligator" class="animal alligator">🐊</div>
-      </div>
-      <div class="choices">
-        <button id="condition-fish" class="animal-btn choice-btn" data-choice="fish">
+    <div class="game-area swamp-scene">
+      <div class="zone-left habitat-water">
+        <div class="water-ripples" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="water-plants" aria-hidden="true">
+          <span>🌿</span><span>🌿</span>
+        </div>
+        <button id="condition-fish" class="animal-btn choice-btn water-choice" data-choice="fish">
           <span class="animal fish">🐟</span>
-          <span class="choice-label">Fish (+1, now)</span>
         </button>
+      </div>
+      <div class="alligator-container shore-strip">
+        <div id="condition-alligator" class="animal alligator swimming">🐊</div>
+      </div>
+      <div id="condition-zone-right" class="zone-right habitat-land">
+        <div class="grass-tufts" aria-hidden="true">
+          <span>🌱</span><span>🌱</span><span>🌱</span>
+        </div>
+        <div class="water-ripples" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
         <button id="condition-ll" class="animal-btn choice-btn" data-choice="larger-later">
           <span id="condition-ll-emoji" class="animal">🐔</span>
-          <span id="condition-ll-label" class="choice-label">Chicken (+10, delayed)</span>
         </button>
       </div>
     </div>

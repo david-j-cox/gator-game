@@ -1,0 +1,187 @@
+/* ===== Swamp Scene Environment ===== */
+
+/* --- Shared Zone Base --- */
+.zone-left,
+.zone-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.zone-left {
+  border-radius: 12px 0 0 12px;
+}
+
+.zone-right {
+  border-radius: 0 12px 12px 0;
+}
+
+/* --- Shore Strip (center gator column) --- */
+.shore-strip {
+  flex: 0 0 80px;
+  background: linear-gradient(180deg, #8B7355 0%, #6B5335 50%, #8B7355 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* --- Habitat Backgrounds --- */
+.habitat-water {
+  background: linear-gradient(180deg, #1a3a4a 0%, #0d2b3e 40%, #0a2233 100%);
+}
+
+.habitat-land {
+  background: linear-gradient(180deg, #2d4a1e 0%, #1e3a12 40%, #162e0d 100%);
+}
+
+.habitat-shore {
+  background: linear-gradient(180deg, #5a4a2a 0%, #4a3a1a 40%, #3a2a10 100%);
+}
+
+/* --- Decorative element visibility per habitat --- */
+.habitat-water > .grass-tufts,
+.habitat-shore > .grass-tufts {
+  display: none;
+}
+
+.habitat-land > .water-ripples,
+.habitat-shore > .water-ripples {
+  display: none;
+}
+
+/* --- Water Ripples --- */
+.water-ripples {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.water-ripples span {
+  position: absolute;
+  width: 60px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  animation: ripple-drift 8s linear infinite;
+}
+
+.water-ripples span:nth-child(1) {
+  top: 20%;
+  left: -60px;
+  animation-delay: 0s;
+}
+
+.water-ripples span:nth-child(2) {
+  top: 50%;
+  left: -60px;
+  animation-delay: -3s;
+  width: 80px;
+}
+
+.water-ripples span:nth-child(3) {
+  top: 75%;
+  left: -60px;
+  animation-delay: -5.5s;
+  width: 50px;
+}
+
+@keyframes ripple-drift {
+  0%   { transform: translateX(0); opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateX(calc(100vw * 0.5)); opacity: 0; }
+}
+
+/* --- Water Plants (Reeds) --- */
+.water-plants {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.8rem;
+}
+
+.water-plants span {
+  display: inline-block;
+  transform-origin: bottom center;
+  animation: reed-sway 4s ease-in-out infinite;
+}
+
+.water-plants span:nth-child(2) {
+  animation-delay: -1.5s;
+}
+
+@keyframes reed-sway {
+  0%, 100% { transform: rotate(-3deg); }
+  50%      { transform: rotate(3deg); }
+}
+
+/* --- Grass Tufts --- */
+.grass-tufts {
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1.4rem;
+}
+
+.grass-tufts span {
+  display: inline-block;
+  transform-origin: bottom center;
+  animation: reed-sway 5s ease-in-out infinite;
+}
+
+.grass-tufts span:nth-child(2) {
+  animation-delay: -2s;
+}
+
+.grass-tufts span:nth-child(3) {
+  animation-delay: -3.5s;
+}
+
+/* --- Zone-Specific Button Styling --- */
+.water-choice {
+  background: #1a3a5a;
+  border-color: #2a6090;
+}
+
+.water-choice:hover:not(:disabled) {
+  background: #1e4570;
+  border-color: #3a80b0;
+}
+
+.land-choice {
+  background: #2a4a1e;
+  border-color: #3a7028;
+}
+
+.land-choice:hover:not(:disabled) {
+  background: #305520;
+  border-color: #4a9038;
+}
+
+.shore-choice {
+  background: #4a3a1e;
+  border-color: #6a5a38;
+}
+
+.shore-choice:hover:not(:disabled) {
+  background: #5a4a2a;
+  border-color: #8a7a58;
+}
